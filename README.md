@@ -3,9 +3,7 @@
 This is a CloudFoundry buildpack for applications which use
 [R](http://www.r-project.org/) for statistical computing and [CRAN](http://cran.r-project.org/) for R packages.
 
-It started as a fork from the R buildpack for Heroku and since then has evolved into an entirely different approach using conda to install the necessary anaconda based packages and gcc to compile those parts of R which are not yet available as conda packages.
-
-My thanks to [Eric Dill](https://github.com/ericdill) for introducing me to conda and for creating the initial working script to automate this install.
+This is a fork from the R Buildpack from rddill-IBM. I just try to make it work.
 
 R is ‘GNU S’, a freely available language and environment for statistical computing and graphics which provides
 a wide variety of statistical and graphical techniques: linear and nonlinear modeling, statistical tests, time
