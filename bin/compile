@@ -36,10 +36,14 @@ export BUILDPACK_DIR="/tmp/buildpacks/BlueMix-R-Buildpack/bin"
 export CONDA_DOWNLOAD_LOCATION=$BUILD_DIR/miniconda.sh
 export CONDA_INSTALL_LOCATION=$BUILD_DIR/miniconda
 topic "BUILD_DIR is $BUILD_DIR"
+ls $BUILD_DIR
 topic "CACHE_DIR is $CACHE_DIR"
+ls $CACHE_DIR
 topic "BUILDPACK_DIR is $BUILDPACK_DIR"
+ls $BUILDPACK_DIR
 topic "PATH is $PATH"
 topic "HOME is $HOME"
+ls $HOME
 
 #
 # insert code to retrieve conda_install from github
