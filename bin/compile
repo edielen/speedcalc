@@ -67,7 +67,6 @@ bash $CONDA_DOWNLOAD_LOCATION -b -p $CONDA_INSTALL_LOCATION
 
 export PATH=$CONDA_INSTALL_LOCATION/bin:$PATH
 
-# changed line 33 contarc to condarc
 echo "Using default condarc"
 echo "always_yes: True
 channels:
@@ -78,10 +77,6 @@ channels:
 - defaults
 " > $BUILD_DIR/.condarc
 export CONDARC=$BUILD_DIR/.condarc
-
-set -x
-
-# conda-env remove -n r_env    # changed conda env to conda-env, added -n
 
 conda create -n r_env -c r r $CONDA_OBJECTS
 
