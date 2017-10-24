@@ -7,6 +7,8 @@ set -e
 # debug ... uncomment following line to put this script in debug mode
 set -x
 
+ls -R /tmp $1 $2
+
 function error() {
   echo " !     $*" >&2
   exit 1
@@ -29,10 +31,10 @@ function indent() {
 }
 
 # initialization
-topic "conda based R BuildPack"
+topic "conda based R BuildPack for SpeedCalc"
 export BUILD_DIR=$1
 export CACHE_DIR=$2
-export BUILDPACK_DIR="/tmp/buildpacks/BlueMix-R-Buildpack/bin"
+export BUILDPACK_DIR="/tmp/buildpacks/speedcalc/bin"
 export CONDA_DOWNLOAD_LOCATION=$BUILD_DIR/miniconda.sh
 export CONDA_INSTALL_LOCATION=$BUILD_DIR/miniconda
 topic "BUILD_DIR is $BUILD_DIR"
