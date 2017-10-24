@@ -5,7 +5,7 @@
 set -e
 
 # debug ... uncomment following line to put this script in debug mode
-set -x
+#set -x
 
 ls -R /tmp $1 $2
 
@@ -83,6 +83,11 @@ channels:
 - defaults
 " > $BUILD_DIR/.condarc
 export CONDARC=$BUILD_DIR/.condarc
+
+topic "list $BUILD_DIR:"
+ls -R $BUILD_DIR
+
+set -x
 
 conda-env remove -n r_env    # changed conda env to conda-env, added -n
 
