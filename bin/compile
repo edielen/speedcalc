@@ -100,7 +100,7 @@ rm -R $CONDA_INSTALL_LOCATION/pkgs/*
 
 # update the following code to use correct staging paths
  topic "copy corrected version of R to appropriate folders"
-cat > $BUILD_DIR/miniconda/envs/r_env/bin <<EOF
+cat > $BUILD_DIR/miniconda/envs/r_env/bin/R <<EOF
 #!/bin/sh
 # Shell wrapper for R executable.
 
@@ -397,10 +397,11 @@ fi
 ### sh-indentation: 2 ***
 ### End: ***
 EOF
-  cp -f $BUILD_DIR/miniconda/envs/r_env/bin $BUILD_DIR/miniconda/envs/r_env/lib/R/bin
 
- topic "copy corrected ldpaths to appropriate folder"
-cat > $BUILD_DIR/miniconda/envs/r_env/lib/R/etc/ <<EOF
+cp -f $BUILD_DIR/miniconda/envs/r_env/bin/R $BUILD_DIR/miniconda/envs/r_env/lib/R/bin/R
+
+topic "copy corrected ldpaths to appropriate folder"
+cat > $BUILD_DIR/miniconda/envs/r_env/lib/R/etc/ldpaths <<EOF
 : ${JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.85.x86_64/jre}
 : ${R_JAVA_LD_LIBRARY_PATH=/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/lib/amd64/server}
 if test -n "/home/vcap/app/miniconda/envs/r_env/lib"; then
@@ -421,8 +422,7 @@ export LD_LIBRARY_PATH
 EOF
 
 # set up .profile to build correct environment for app execution
- mkdir $BUILD_DIR/.profile.d
- cp -f $BUILDPACK_DIR/target.profile $BUILD_DIR/.profile.d/.profile
+mkdir $BUILD_DIR/.profile.d
 cat > $BUILD_DIR/.profile.d/.profile <<EOF
 export PATH=$HOME/miniconda/envs/r_env/lib/R/bin:$HOME/miniconda/envs/r_env/bin:$HOME/miniconda/bin:$PATH
 export LD_LIBRARY_PATH=$HOME/miniconda/envs/r_env/lib/R/lib:$HOME/miniconda/envs/r_env/lib:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/lib/amd64/server
