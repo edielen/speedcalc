@@ -5,7 +5,7 @@
 set -e
 
 # debug ... uncomment following line to put this script in debug mode
-# set -x
+set -x
 
 function error() {
   echo " !     $*" >&2
