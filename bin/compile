@@ -7,8 +7,6 @@ set -e
 # debug ... uncomment following line to put this script in debug mode
 #set -x
 
-ls -R /tmp $1 $2
-
 function error() {
   echo " !     $*" >&2
   exit 1
@@ -37,12 +35,9 @@ export CACHE_DIR=$2
 export CONDA_DOWNLOAD_LOCATION=$BUILD_DIR/miniconda.sh
 export CONDA_INSTALL_LOCATION=$BUILD_DIR/miniconda
 topic "BUILD_DIR is $BUILD_DIR"
-ls $BUILD_DIR
 topic "CACHE_DIR is $CACHE_DIR"
-ls $CACHE_DIR
 topic "PATH is $PATH"
 topic "HOME is $HOME"
-ls $HOME
 
 #
 # insert code to retrieve conda_install from github
@@ -84,12 +79,9 @@ channels:
 " > $BUILD_DIR/.condarc
 export CONDARC=$BUILD_DIR/.condarc
 
-topic "list $BUILD_DIR:"
-ls -R $BUILD_DIR
-
 set -x
 
-conda-env remove -n r_env    # changed conda env to conda-env, added -n
+# conda-env remove -n r_env    # changed conda env to conda-env, added -n
 
 conda create -n r_env -c r r $CONDA_OBJECTS
 
