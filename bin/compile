@@ -94,8 +94,8 @@ export PATH
 
 conda clean -i -l -t -s
 rm -rf $CONDA_INSTALL_LOCATION/pkgs
-find $CONDA_INSTALL_LOCATION -name man -type d -exec rm -rf {} \;
-find $CONDA_INSTALL_LOCATION -name include -type d -exec rm -rf {} \;
+find $CONDA_INSTALL_LOCATION -name man -type d -prune -exec rm -rf {} +
+find $CONDA_INSTALL_LOCATION -name include -type d -prune -exec rm -rf {} +
 
 #
 # insert code here to replace need for engine_build bash file
