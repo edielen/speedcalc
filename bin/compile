@@ -92,7 +92,7 @@ Rscript $BUILD_DIR/init.r
 echo $PATH
 export PATH
 
-rm -rf $CONDA_INSTALL_LOCATION/pkgs/*
+conda clean -i -l -t -s
 
 #
 # insert code here to replace need for engine_build bash file
@@ -438,7 +438,7 @@ EOF
 topic "conda based R Build is complete"
 topic "PATH = $PATH"
 topic "Install complete"
-topic "$(which Rscript)
+topic "$(which Rscript)"
 
-conda list
 conda remove --name r_env gcc
+df -h
