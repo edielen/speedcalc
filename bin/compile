@@ -440,6 +440,5 @@ topic "PATH = $PATH"
 topic "Install complete"
 
 conda remove --name r_env gcc
-conda remove --name r_env libgcc-ng
 conda remove --name r_env libgfortran
 conda remove --name r_env libgfortran-ng
