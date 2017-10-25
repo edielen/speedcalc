@@ -93,7 +93,6 @@ echo $PATH
 export PATH
 
 rm -rf $CONDA_INSTALL_LOCATION/pkgs/*
-find $BUILD_DIR -name '*.html' -exec rm -rf {} \;
 
 #
 # insert code here to replace need for engine_build bash file
@@ -436,10 +435,14 @@ export R_LIBS_USER=$R_LIBS
 export RHOME=$R_HOME
 EOF
 
-ls -R $BUILD_DIR
-
 topic "conda based R Build is complete"
 topic "PATH = $PATH"
 topic "Install complete"
 
 df -h
+conda list
+conda remove --name r_env gcc
+conda list
+df -h
+
+sleep 10
