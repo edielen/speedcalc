@@ -93,6 +93,7 @@ echo $PATH
 export PATH
 
 conda clean -i -l -t -s
+rm -R $CONDA_INSTALL_LOCATION/pkgs/*
 
 #
 # insert code here to replace need for engine_build bash file
