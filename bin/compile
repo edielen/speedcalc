@@ -93,7 +93,7 @@ echo $PATH
 export PATH
 
 conda clean -i -l -t -s
-rm -R $CONDA_INSTALL_LOCATION/pkgs/*
+rm -rf $CONDA_INSTALL_LOCATION/pkgs
 
 #
 # insert code here to replace need for engine_build bash file
@@ -424,8 +424,14 @@ EOF
 # set up .profile to build correct environment for app execution
 mkdir $BUILD_DIR/.profile.d
 cat > $BUILD_DIR/.profile.d/speedcalc.sh <<EOF
+echo $HOME
+df -h
+ls -R $HOME
 export PATH=$HOME/miniconda/envs/r_env/lib/R/bin:$HOME/miniconda/envs/r_env/bin:$HOME/miniconda/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/miniconda/envs/r_env/lib/R/lib:$HOME/miniconda/envs/r_env/lib:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/lib/amd64/server
+find $HOME -name Rscript
+which Rscript
+sleep 10
+export LD_LIBRARY_PATH=$HOME/miniconda/envs/r_env/lib/R/lib:$HOME/miniconda/envs/r_env/lib:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/lib/amd64/server:$LD_LIBRARY_PATH
 export R_DOC_DIR=$HOME/miniconda/envs/r_env/lib/R/doc
 export R_HOME=$HOME/miniconda/envs/r_env/lib/R
 export R_INCLUDE_DIR=$HOME/miniconda/envs/r_env/lib/R/include
@@ -439,7 +445,6 @@ EOF
 topic "conda based R Build is complete"
 topic "PATH = $PATH"
 topic "Install complete"
-topic "$(which Rscript)"
 
 conda remove --name r_env gcc
 df -h
