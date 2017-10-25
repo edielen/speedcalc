@@ -439,10 +439,8 @@ topic "conda based R Build is complete"
 topic "PATH = $PATH"
 topic "Install complete"
 
-df -h
-conda list
 conda remove --name r_env gcc
-conda list
-df -h
-
-sleep 10
+conda remove --name r_env libgcc
+conda remove --name r_env libgcc-ng
+conda remove --name r_env libgfortran
+conda remove --name r_env libgfortran-ng
