@@ -39,6 +39,8 @@ topic "CACHE_DIR is $CACHE_DIR"
 topic "PATH is $PATH"
 topic "HOME is $HOME"
 
+df -h
+
 #
 # insert code to retrieve conda_install from github
 #
@@ -434,3 +436,5 @@ EOF
 topic "conda based R Build is complete"
 topic "PATH = $PATH"
 topic "Install complete"
+
+df -h
