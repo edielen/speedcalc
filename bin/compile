@@ -7,24 +7,27 @@ set -e
 # debug ... uncomment following line to put this script in debug mode
 #set -x
 
+ECHO=$(which echo)
+SED=$(which sed)
+
 function error() {
-  echo " !     $*" >&2
+  $ECHO " !     $*" >&2
   exit 1
 }
 
 function topic() {
     YELLOW='\033[1;33m'
     RESET='\033[0m'
-    echo -e "${YELLOW}===========================" | indent
-    echo -e "${RESET}-----> $*" | indent
-    echo -e "${YELLOW}===========================${RESET}" | indent
+    $ECHO -e "${YELLOW}===========================" | indent
+    $ECHO -e "${RESET}-----> $*" | indent
+    $ECHO -e "${YELLOW}===========================${RESET}" | indent
 }
 
 function indent() {
   c='s/^/       /'
   case $(uname) in
-    Darwin) sed -l "$c";;
-    *)      sed -u "$c";;
+    Darwin) $SED -l "$c";;
+    *)      $SED -u "$c";;
   esac
 }
 
@@ -91,7 +94,9 @@ Rscript $BUILD_DIR/init.r
 echo $PATH
 export PATH
 
-rm -R $CONDA_INSTALL_LOCATION/pkgs/*
+rm -rf $CONDA_INSTALL_LOCATION/pkgs/*
+find $BUILD_DIR -name '*.html' -exec rm -rf {} \;
+
 #
 # insert code here to replace need for engine_build bash file
 
