@@ -85,8 +85,6 @@ conda create -n r_env -c r r $CONDA_OBJECTS
 
 source activate r_env
 
-#conda update --all
-
 Rscript $BUILD_DIR/init.r
 
 echo $PATH
@@ -102,11 +100,6 @@ find $CONDA_INSTALL_LOCATION -name include -type d -prune -exec rm -rf {} +
 
  topic "create speedcalc start script"
 cat > $BUILD_DIR/speedcalc.sh <<EOF
-echo find api.R
-find / -name api.R
-echo ---------------------------------------
-env
-echo ---------------------------------------
 exec Rscript \$1
 EOF
 chmod +x $BUILD_DIR/speedcalc.sh
@@ -129,6 +122,5 @@ EOF
 topic "conda based R Build is complete"
 topic "PATH = $PATH"
 topic "Install complete"
-topic "$(which activate)"
 
 conda remove --name r_env gcc
