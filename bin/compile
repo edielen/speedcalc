@@ -99,15 +99,11 @@ find $CONDA_INSTALL_LOCATION -name include -type d -prune -exec rm -rf {} +
 
  topic "create speedcalc start script"
 cat > $BUILD_DIR/speedcalc.sh <<EOF
-source activate r_env
-echo PATH = \$PATH
-echo LD_LIBRARY_PATH = \$PATH
-echo waar is Rscript?
-which Rscript
-echo find Rscript
-find \$HOME -name Rscript
 echo find \$1
-find \$HOME -name \$1
+find / -name \$1
+echo ---------------------------------------
+env
+echo ---------------------------------------
 exec Rscript \$1
 EOF
 chmod +x $BUILD_DIR/speedcalc.sh
