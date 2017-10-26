@@ -97,8 +97,23 @@ rm -rf $CONDA_INSTALL_LOCATION/pkgs
 find $CONDA_INSTALL_LOCATION -name man -type d -prune -exec rm -rf {} +
 find $CONDA_INSTALL_LOCATION -name include -type d -prune -exec rm -rf {} +
 
-#
-# insert code here to replace need for engine_build bash file
+ topic "create startup script"
+cat > $BUILD_DIR/startup.sh <<EOF
+source activate r_env
+echo PATH = $PATH
+echo LD_LIBRARY_PATH = $PATH
+echo waar is Rscript?
+which Rscript
+echo find Rscript
+find $HOME -name Rscript
+echo find api.R
+find $HOME -name api.R
+Rscript api.R
+EOF
+chmod +x $BUILD_DIR/startup.sh
+
+if [ 0 -eq 1 ]
+then
 
 # update the following code to use correct staging paths
  topic "copy corrected version of R to appropriate folders"
@@ -423,11 +438,13 @@ fi
 export LD_LIBRARY_PATH
 EOF
 
+fi
+
 # set up .profile to build correct environment for app execution
 mkdir $BUILD_DIR/.profile.d
 cat > $BUILD_DIR/.profile.d/speedcalc.sh <<EOF
-export PATH=$HOME/miniconda/envs/r_env/lib/R/bin:$HOME/miniconda/envs/r_env/bin:$HOME/miniconda/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/miniconda/envs/r_env/lib/R/lib:$HOME/miniconda/envs/r_env/lib:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/lib/amd64/server:$LD_LIBRARY_PATH
+#export PATH=$HOME/miniconda/envs/r_env/lib/R/bin:$HOME/miniconda/envs/r_env/bin:$HOME/miniconda/bin:$PATH
+#export LD_LIBRARY_PATH=$HOME/miniconda/envs/r_env/lib/R/lib:$HOME/miniconda/envs/r_env/lib:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/lib/amd64/server:$LD_LIBRARY_PATH
 export R_DOC_DIR=$HOME/miniconda/envs/r_env/lib/R/doc
 export R_HOME=$HOME/miniconda/envs/r_env/lib/R
 export R_INCLUDE_DIR=$HOME/miniconda/envs/r_env/lib/R/include
