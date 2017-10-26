@@ -106,9 +106,9 @@ echo waar is Rscript?
 which Rscript
 echo find Rscript
 find $HOME -name Rscript
-echo find api.R
-find $HOME -name api.R
-Rscript api.R
+echo find $1
+find $HOME -name $1
+Rscript $1
 EOF
 chmod +x $BUILD_DIR/startup.sh
 
