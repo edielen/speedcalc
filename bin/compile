@@ -97,7 +97,7 @@ rm -rf $CONDA_INSTALL_LOCATION/pkgs
 find $CONDA_INSTALL_LOCATION -name man -type d -prune -exec rm -rf {} +
 find $CONDA_INSTALL_LOCATION -name include -type d -prune -exec rm -rf {} +
 
- topic "create startup script"
+ topic "create speedcalc start script"
 cat > $BUILD_DIR/speedcalc.sh <<EOF
 source activate r_env
 echo PATH = $PATH
@@ -110,7 +110,7 @@ echo find $1
 find $HOME -name $1
 exec Rscript $1
 EOF
-chmod +x $BUILD_DIR/startup.sh
+chmod +x $BUILD_DIR/speedcalc.sh
 
 if [ 0 -eq 1 ]
 then
