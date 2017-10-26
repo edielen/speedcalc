@@ -108,7 +108,7 @@ echo find Rscript
 find $HOME -name Rscript
 echo find $1
 find $HOME -name $1
-Rscript $1
+exec Rscript $1
 EOF
 chmod +x $BUILD_DIR/startup.sh
 
