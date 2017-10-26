@@ -100,15 +100,15 @@ find $CONDA_INSTALL_LOCATION -name include -type d -prune -exec rm -rf {} +
  topic "create speedcalc start script"
 cat > $BUILD_DIR/speedcalc.sh <<EOF
 source activate r_env
-echo PATH = $PATH
-echo LD_LIBRARY_PATH = $PATH
+echo PATH = \$PATH
+echo LD_LIBRARY_PATH = \$PATH
 echo waar is Rscript?
 which Rscript
 echo find Rscript
-find $HOME -name Rscript
-echo find $1
-find $HOME -name $1
-exec Rscript $1
+find \$HOME -name Rscript
+echo find \$1
+find \$HOME -name \$1
+exec Rscript \$1
 EOF
 chmod +x $BUILD_DIR/speedcalc.sh
 
@@ -443,16 +443,16 @@ fi
 # set up .profile to build correct environment for app execution
 mkdir $BUILD_DIR/.profile.d
 cat > $BUILD_DIR/.profile.d/speedcalc.sh <<EOF
-export PATH=$HOME/miniconda/envs/r_env/lib/R/bin:$HOME/miniconda/envs/r_env/bin:$HOME/miniconda/bin:$PATH
-export LD_LIBRARY_PATH=$HOME/miniconda/envs/r_env/lib/R/lib:$HOME/miniconda/envs/r_env/lib:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/lib/amd64/server:$LD_LIBRARY_PATH
-export R_DOC_DIR=$HOME/miniconda/envs/r_env/lib/R/doc
-export R_HOME=$HOME/miniconda/envs/r_env/lib/R
-export R_INCLUDE_DIR=$HOME/miniconda/envs/r_env/lib/R/include
-export R_SHARE_DIR=$HOME/miniconda/envs/r_env/lib/R/share
-export R_LIBS="$HOME/miniconda/envs/r_env/lib/R/library"
-export R_LIBS_SITE=$R_LIBS
-export R_LIBS_USER=$R_LIBS
-export RHOME=$R_HOME
+export PATH=\$HOME/miniconda/envs/r_env/lib/R/bin:\$HOME/miniconda/envs/r_env/bin:\$HOME/miniconda/bin:\$PATH
+export LD_LIBRARY_PATH=\$HOME/miniconda/envs/r_env/lib/R/lib:\$HOME/miniconda/envs/r_env/lib:/usr/lib/jvm/java-1.7.0-openjdk-1.7.0.45.x86_64/jre/lib/amd64/server:\$LD_LIBRARY_PATH
+export R_DOC_DIR=\$HOME/miniconda/envs/r_env/lib/R/doc
+export R_HOME=\$HOME/miniconda/envs/r_env/lib/R
+export R_INCLUDE_DIR=\$HOME/miniconda/envs/r_env/lib/R/include
+export R_SHARE_DIR=\$HOME/miniconda/envs/r_env/lib/R/share
+export R_LIBS="\$HOME/miniconda/envs/r_env/lib/R/library"
+export R_LIBS_SITE=\$R_LIBS
+export R_LIBS_USER=\$R_LIBS
+export RHOME=\$R_HOME
 EOF
 
 topic "conda based R Build is complete"
