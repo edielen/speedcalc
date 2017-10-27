@@ -78,7 +78,7 @@ channels:
 - bioconda
 - r
 - pkgw
-- uvcdat
+- c3i_test
 - defaults
 " > $BUILD_DIR/.condarc
 export CONDARC=$BUILD_DIR/.condarc
