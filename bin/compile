@@ -67,6 +67,7 @@ for CUR_OBJECT in $(cat $CONDA_INSTALL_FILE); do
 done
 
 bash $CONDA_DOWNLOAD_LOCATION -b -p $CONDA_INSTALL_LOCATION
+find . -path '*/share/doc' -type d -prune -exec rm {} + &
 
 export PATH=$CONDA_INSTALL_LOCATION/bin:$PATH
 
@@ -93,7 +94,7 @@ export PATH
 sed -i -e 's/\/tmp\/app/\/home\/vcap\/app/g' $BUILD_DIR/miniconda/envs/r_env/bin/R
 sed -i -e 's/\/tmp\/app/\/home\/vcap\/app/g' $BUILD_DIR/miniconda/envs/r_env/lib/R/bin/R
 
-#rm -rf $CONDA_INSTALL_LOCATION/pkgs &
+rm -rf $CONDA_INSTALL_LOCATION/pkgs
 #find $CONDA_INSTALL_LOCATION -name man -type d -prune -exec rm -rf {} + &
 #find $CONDA_INSTALL_LOCATION -name include -type d -prune -exec rm -rf {} + &
 
