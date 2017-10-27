@@ -93,9 +93,9 @@ export PATH
 sed -i -e 's/\/tmp\/app/\/home\/vcap\/app/g' $BUILD_DIR/miniconda/envs/r_env/bin/R
 sed -i -e 's/\/tmp\/app/\/home\/vcap\/app/g' $BUILD_DIR/miniconda/envs/r_env/lib/R/bin/R
 
-rm -rf $CONDA_INSTALL_LOCATION/pkgs &
-find $CONDA_INSTALL_LOCATION -name man -type d -prune -exec rm -rf {} + &
-find $CONDA_INSTALL_LOCATION -name include -type d -prune -exec rm -rf {} + &
+#rm -rf $CONDA_INSTALL_LOCATION/pkgs &
+#find $CONDA_INSTALL_LOCATION -name man -type d -prune -exec rm -rf {} + &
+#find $CONDA_INSTALL_LOCATION -name include -type d -prune -exec rm -rf {} + &
 
  topic "create speedcalc start script"
 cat > $BUILD_DIR/speedcalc.sh <<EOF
