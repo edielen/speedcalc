@@ -124,4 +124,4 @@ topic "conda based R Build is complete"
 topic "PATH = $PATH"
 topic "Install complete"
 
-#conda remove --name r_env gcc
+conda remove --name r_env gfortran_linux-64
